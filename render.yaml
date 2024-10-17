@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: BankingApp
+    env: java
+    buildCommand: "chmod +x ./mvnw && ./mvnw clean package"
+    startCommand: "java -jar target/To-Do-Application.jar"
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
