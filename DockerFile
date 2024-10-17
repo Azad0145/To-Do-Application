@@ -5,10 +5,10 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the Maven build output (JAR file) to the container
-COPY target/To-Do-Application.jar app.jar
+COPY target/To-Do-Application-0.0.1-SNAPSHOT.jar
 
 # Command to run the application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "To-Do-Application.jar"]
 
 # Expose the port your app runs on
 EXPOSE 8080
