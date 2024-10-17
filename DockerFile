@@ -1,0 +1,14 @@
+# Use the official Java image as a parent image
+FROM openjdk:11-jre-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Maven build output (JAR file) to the container
+COPY target/To-Do-Application.jar app.jar
+
+# Command to run the application
+CMD ["java", "-jar", "app.jar"]
+
+# Expose the port your app runs on
+EXPOSE 8080
