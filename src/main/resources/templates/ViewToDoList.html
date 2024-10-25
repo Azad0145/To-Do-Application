@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+
+</head>
+<body>
+<h1>ToDo List</h1>
+
+<div th:if="${message}" class="alert">
+    <p th:text="${message}"></p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${list}">
+        <td th:text="${item.title}"></td>
+        <td th:text="${item.status}"></td>
+        <td>
+            <a th:href="@{/updateToDoStatus/{id}(id=${item.id})}">Mark As Complete</a>
+            <a th:href="@{/editToDoItem/{id}(id=${item.id})}">Edit</a>
+            <a th:href="@{/deleteToDoItem/{id}(id=${item.id})}" >Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/addToDoItem">Add New ToDo Item</a>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.alert {
+    background-color: #f9c2c2;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: blue;
+}
+
+button {
+    margin-top: 10px;
+}
+
+</style>
+</html>
