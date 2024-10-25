@@ -1,10 +1,13 @@
+# Stage 1: Build the application
 FROM maven:3.8.5-openjdk-17 AS build
-COPY ..
-FROM mvn clean package DskipTests
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
 
+# Stage 2: Run the application
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build target/To-Do-Application-0.0.1-SNAPSHOT.jar
+WORKDIR /app
+COPY --from=build /app/target/To-Do-Application-0.0.1-SNAPSHOT.jar To-Do-Application.jar
 
 EXPOSE 8080
-# Command to run the application
 CMD ["java", "-jar", "To-Do-Application.jar"]
